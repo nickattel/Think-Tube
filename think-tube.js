@@ -1,5 +1,7 @@
 const endpointUrl = 'https://www.googleapis.com/youtube/v3/search';
 
+const resultLayout = `<div><a class='videoLink' href=''><img class='thumbnail' src=""></a></div><div><a class='channelLink' href=''></a></div>`;
+
 function getDataFromApi(searchTerm, callback) {
   const query = {
     part: 'snippet',
@@ -12,11 +14,12 @@ function getDataFromApi(searchTerm, callback) {
 }
 
 function renderResult(result) {
-  const resultLayout = `<div class='videoLink'><img class='thumbnail' src=""></div><div class='channelLink'></div>`;
   const layout = $(resultLayout);
+  const videoUrl = `https://www.youtube.com/watch?v=${result.id.videoId}`;
+  const channelUrl = `https://www.youtube.com/watch?v=${result.snippet.channelId}`;
   layout.find('.thumbnail').attr('src', result.snippet.thumbnails.medium.url);
-  layout.find('.videoLink').attr('href', result.id.videoId);
-  layout.find('.channelLink').attr('href', result.snippet.channelId);
+  layout.find('.videoLink').attr('href', videoUrl);
+  layout.find('.channelLink').html(channelUrl).attr('href', channelUrl);
   return layout;
 }
 
