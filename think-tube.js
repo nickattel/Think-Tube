@@ -1,6 +1,6 @@
 const endpointUrl = 'https://www.googleapis.com/youtube/v3/search';
 
-const resultLayout = `<div><a class='videoLink' href=''><img class='thumbnail' src=""></a></div><div><a class='channelLink' href=''></a></div>`;
+const resultLayout = `<div><a class='videoLink' href=''><img class='thumbnail' alt='' src=''></a></div><div><a class='channelLink' href=''></a></div>`;
 
 function getDataFromApi(searchTerm, callback) {
   const query = {
@@ -18,6 +18,8 @@ function renderResult(result) {
   const videoUrl = `https://www.youtube.com/watch?v=${result.id.videoId}`;
   const channelUrl = `https://www.youtube.com/channel/${result.snippet.channelId}`;
   layout.find('.thumbnail').attr('src', result.snippet.thumbnails.medium.url);
+  console.log("here is the title", result.snippet.title);
+  layout.find('.thumbnail').attr('alt', result.snippet.title);
   layout.find('.videoLink').attr('href', videoUrl);
   layout.find('.channelLink').html(channelUrl).attr('href', channelUrl);
   return layout;

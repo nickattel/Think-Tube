@@ -8,17 +8,19 @@
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous">
-      </script>
+    </script>
   </head>
   
   <body>
-    <header role='think-tube search'></header>
+    <header role='banner'>
+      <h1>Think-Tube Video Search</h1>
+    </header>
       <main>
-        <h1 role='heading'>Think-Tube Video Search</h1>
-        <form action="#" class="js-search-form" label=''>
+        <!-- <h1 role='listitem' aria-level='1'>Think-Tube Video Search</h1> -->
+        <form action="#" class="js-search-form" aria-label='search for videos'>
           <label for="query"></label>
           <input type="text" class="js-query"
-          placeholder="Search">
+          placeholder="Search" aria-label='video title'>
           <button type="submit">Search</button>
         </form>
 
