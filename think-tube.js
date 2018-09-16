@@ -16,7 +16,7 @@ function getDataFromApi(searchTerm, callback) {
 function renderResult(result) {
   const layout = $(resultLayout);
   const videoUrl = `https://www.youtube.com/watch?v=${result.id.videoId}`;
-  const channelUrl = `https://www.youtube.com/watch?v=${result.snippet.channelId}`;
+  const channelUrl = `https://www.youtube.com/channel/${result.snippet.channelId}`;
   layout.find('.thumbnail').attr('src', result.snippet.thumbnails.medium.url);
   layout.find('.videoLink').attr('href', videoUrl);
   layout.find('.channelLink').html(channelUrl).attr('href', channelUrl);
